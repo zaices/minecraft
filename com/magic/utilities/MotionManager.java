@@ -3,7 +3,7 @@ package com.magic.utilities;
 import com.magic.main.Objects;
 import com.magic.modules.Module;
 
-public class MotionManager {
+public final class MotionManager {
 	
 	public synchronized void runPreMotions() {
 		for(Module mod : Objects.mManager.getModules()) {

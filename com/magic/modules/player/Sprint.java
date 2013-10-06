@@ -5,6 +5,7 @@ import net.minecraft.src.Material;
 import org.lwjgl.input.Keyboard;
 
 import com.magic.main.Objects;
+import com.magic.modules.Category;
 import com.magic.modules.Module;
 
 /**
@@ -15,7 +16,7 @@ import com.magic.modules.Module;
 public class Sprint extends Module{
 	
 	public Sprint() {
-		super("Speed", Keyboard.KEY_V, 0x69FC24);
+		super("Speed (Sprint)", Keyboard.KEY_V, 0xFFFFBF00, true, Category.PLAYER);
 	}
 	
 	public void onPreMotionUpdates() {

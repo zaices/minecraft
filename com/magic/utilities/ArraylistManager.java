@@ -1,5 +1,6 @@
 package com.magic.utilities;
 
+import net.minecraft.src.Gui;
 import net.minecraft.src.ScaledResolution;
 
 import com.magic.main.Objects;
@@ -11,13 +12,13 @@ public class ArraylistManager {
 		
 		ScaledResolution sr = new ScaledResolution(Objects.mc.gameSettings, Objects.mc.displayWidth, Objects.mc.displayHeight);
 		
-		int posY = 2;
-		int posX = sr.getScaledWidth();
+		int _posY = 2;
+		int _posX = sr.getScaledWidth();
 		
 		for(Module mod : Objects.mManager.getModules()) {			
-			if(mod.isEnabled()) {
-				Objects.fr.drawStringWithShadow(mod.getName(), posX - Objects.fr.getStringWidth(mod.getName()) - 3, posY, mod.getColor());
-				posY += 10;
+			if(mod.isEnabled() && mod.isVisible()) {
+				Objects.customFont.drawStringS(new Gui(), mod.getName(), _posX * 2 - Objects.customFont.getStringWidth(mod.getName()) - 5, _posY - 5, mod.getColor());
+				_posY += 18;
 			}
 		}
 	}

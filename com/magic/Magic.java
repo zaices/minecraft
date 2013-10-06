@@ -4,7 +4,7 @@ public final class Magic {
 	
 	private final String NAME = "Magic";
 	
-	private final String RELEASE = "1.2.1";
+	private final String RELEASE = "1.5.4";
 	
 	private final String MCV = "1.6.4";
 	

@@ -13,6 +13,8 @@ import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GLContext;
 import org.lwjgl.util.glu.Project;
 
+import com.magic.modules.world.Tracers;
+
 public class EntityRenderer
 {
     private static final ResourceLocation field_110924_q = new ResourceLocation("textures/environment/rain.png");
@@ -655,6 +657,7 @@ public class EntityRenderer
 
         if (this.mc.gameSettings.viewBobbing)
         {
+        	if(!Tracers._uwot)
             this.setupViewBobbing(par1);
         }
 
@@ -714,6 +717,11 @@ public class EntityRenderer
      */
     private void renderHand(float par1, int par2)
     {
+    	if(Tracers._uwot) {
+    		Tracers.drawTracerLine(par2);
+    		Tracers.drawBoundingBox();
+    	}
+
         if (this.debugViewDirection <= 0)
         {
             GL11.glMatrixMode(GL11.GL_PROJECTION);

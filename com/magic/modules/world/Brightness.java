@@ -7,7 +7,7 @@ import com.magic.modules.*;
 public class Brightness extends Module{
 
 	public Brightness() {
-		super("Brightness", Keyboard.KEY_C, 0xFFDB58);
+		super("Brightness", Keyboard.KEY_C, 0xFFF5DA81, true, Category.WORLD);
 	}
 	
 	public void onEnable() {

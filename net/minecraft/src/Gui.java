@@ -9,7 +9,7 @@ public class Gui
     public static final ResourceLocation field_110324_m = new ResourceLocation("textures/gui/icons.png");
     protected float zLevel;
 
-    protected void drawHorizontalLine(int par1, int par2, int par3, int par4)
+    protected static void drawHorizontalLine(int par1, int par2, int par3, int par4)
     {
         if (par2 < par1)
         {
@@ -21,7 +21,7 @@ public class Gui
         drawRect(par1, par3, par2 + 1, par3 + 1, par4);
     }
 
-    protected void drawVerticalLine(int par1, int par2, int par3, int par4)
+    public static void drawVerticalLine(int par1, int par2, int par3, int par4)
     {
         if (par3 < par2)
         {

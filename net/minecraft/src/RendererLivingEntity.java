@@ -1,8 +1,13 @@
 package net.minecraft.src;
 
 import java.util.Random;
+
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
+
+import com.magic.main.Objects;
+import com.magic.modules.combat.KillAura;
+import com.magic.modules.world.DepthMask;
 
 public abstract class RendererLivingEntity extends Render
 {
@@ -52,6 +57,10 @@ public abstract class RendererLivingEntity extends Render
     public void func_130000_a(EntityLivingBase par1EntityLivingBase, double par2, double par4, double par6, float par8, float par9)
     {
         GL11.glPushMatrix();
+        if(DepthMask._uwot) {
+            GL11.glDepthMask(false); //zai
+            GL11.glDisable(2929); //zai
+        }
         GL11.glDisable(GL11.GL_CULL_FACE);
         this.mainModel.onGround = this.renderSwingProgress(par1EntityLivingBase, par9);
 
@@ -258,7 +267,11 @@ public abstract class RendererLivingEntity extends Render
         GL11.glEnable(GL11.GL_TEXTURE_2D);
         OpenGlHelper.setActiveTexture(OpenGlHelper.defaultTexUnit);
         GL11.glEnable(GL11.GL_CULL_FACE);
-        GL11.glPopMatrix();
+        GL11.glEnable(2929);
+        if(DepthMask._uwot || !DepthMask._uwot) {
+            GL11.glDepthMask(true); //zai
+            GL11.glPopMatrix(); //zai
+        }
         this.passSpecialRender(par1EntityLivingBase, par2, par4, par6);
     }
 
@@ -537,7 +550,12 @@ public abstract class RendererLivingEntity extends Render
             var12.drawString(par2Str, -var12.getStringWidth(par2Str) / 2, var16, 553648127);
             GL11.glEnable(GL11.GL_DEPTH_TEST);
             GL11.glDepthMask(true);
-            var12.drawString(par2Str, -var12.getStringWidth(par2Str) / 2, var16, -1);
+            if(Objects.killaura.hasFriend(par1EntityLivingBase)) {
+            	var12.drawString(par2Str, -var12.getStringWidth(par2Str) / 2, var16, 553648127);
+            }else
+            {
+            	var12.drawString(par2Str, -var12.getStringWidth(par2Str) / 2, var16, -1);
+            }
             GL11.glEnable(GL11.GL_LIGHTING);
             GL11.glDisable(GL11.GL_BLEND);
             GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);

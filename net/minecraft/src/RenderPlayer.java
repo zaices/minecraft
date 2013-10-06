@@ -2,6 +2,8 @@ package net.minecraft.src;
 
 import org.lwjgl.opengl.GL11;
 
+import com.magic.modules.world.NameTags;
+
 public class RenderPlayer extends RendererLivingEntity
 {
     private static final ResourceLocation field_110826_a = new ResourceLocation("textures/entity/steve.png");

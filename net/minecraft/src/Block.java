@@ -3,6 +3,8 @@ package net.minecraft.src;
 import java.util.List;
 import java.util.Random;
 
+import com.magic.modules.world.Xray;
+
 public class Block
 {
     /**
@@ -360,7 +362,11 @@ public class Block
      */
     public boolean renderAsNormalBlock()
     {
-        return true;
+    	if(Xray._uwot) {
+    		return false;
+    	}else {
+    		return true;
+    	}
     }
 
     public boolean getBlocksMovement(IBlockAccess par1IBlockAccess, int par2, int par3, int par4)
@@ -859,7 +865,13 @@ public class Block
      */
     public int getRenderBlockPass()
     {
-        return 0;
+    	if(Xray._uwot)
+    	{
+    		return !Xray._uwot || blockID == 15 || blockID == 56 ? 0:1;
+    	}else
+    	{
+    		return Xray._uwot || blockID == 8 || blockID == 9 ? 1:0;
+    	}
     }
 
     public boolean canPlaceBlockOnSide(World par1World, int par2, int par3, int par4, int par5, ItemStack par6ItemStack)

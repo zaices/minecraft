@@ -5,12 +5,14 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URI;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.Random;
+
 import org.apache.commons.io.Charsets;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.util.glu.Project;
+
+import com.magic.gui.MainMenu;
+import com.magic.main.Objects;
 
 public class GuiMainMenu extends GuiScreen
 {
@@ -39,6 +41,7 @@ public class GuiMainMenu extends GuiScreen
     private String field_104024_v;
     private static final ResourceLocation field_110353_x = new ResourceLocation("texts/splashes.txt");
     private static final ResourceLocation field_110352_y = new ResourceLocation("textures/gui/title/minecraft.png");
+    private static final ResourceLocation MagicTitle = new ResourceLocation("textures/gui/Magic/magic.png");
 
     /** An array of all the paths to the panorama pictures. */
     private static final ResourceLocation[] titlePanoramaPaths = new ResourceLocation[] {new ResourceLocation("textures/gui/title/background/panorama_0.png"), new ResourceLocation("textures/gui/title/background/panorama_1.png"), new ResourceLocation("textures/gui/title/background/panorama_2.png"), new ResourceLocation("textures/gui/title/background/panorama_3.png"), new ResourceLocation("textures/gui/title/background/panorama_4.png"), new ResourceLocation("textures/gui/title/background/panorama_5.png")};
@@ -142,29 +145,6 @@ public class GuiMainMenu extends GuiScreen
     {
         this.viewportTexture = new DynamicTexture(256, 256);
         this.field_110351_G = this.mc.func_110434_K().func_110578_a("background", this.viewportTexture);
-        Calendar var1 = Calendar.getInstance();
-        var1.setTime(new Date());
-
-        if (var1.get(2) + 1 == 11 && var1.get(5) == 9)
-        {
-            this.splashText = "Happy birthday, ez!";
-        }
-        else if (var1.get(2) + 1 == 6 && var1.get(5) == 1)
-        {
-            this.splashText = "Happy birthday, Notch!";
-        }
-        else if (var1.get(2) + 1 == 12 && var1.get(5) == 24)
-        {
-            this.splashText = "Merry X-mas!";
-        }
-        else if (var1.get(2) + 1 == 1 && var1.get(5) == 1)
-        {
-            this.splashText = "Happy new year!";
-        }
-        else if (var1.get(2) + 1 == 10 && var1.get(5) == 31)
-        {
-            this.splashText = "OOoooOOOoooo! Spooky!";
-        }
 
         boolean var2 = true;
         int var3 = this.height / 4 + 48;
@@ -518,6 +498,7 @@ public class GuiMainMenu extends GuiScreen
         this.drawGradientRect(0, 0, this.width, this.height, -2130706433, 16777215);
         this.drawGradientRect(0, 0, this.width, this.height, 0, Integer.MIN_VALUE);
         this.mc.func_110434_K().func_110577_a(field_110352_y);
+        
         GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 
         if ((double)this.updateCounter < 1.0E-4D)
@@ -543,7 +524,7 @@ public class GuiMainMenu extends GuiScreen
         GL11.glScalef(var8, var8, var8);
         this.drawCenteredString(this.fontRenderer, this.splashText, 0, -8, 16776960);
         GL11.glPopMatrix();
-        String var9 = "Minecraft 1.6.2";
+        String var9 = Objects.magic.getName() + " Client (rel-" + Objects.magic.getMCVersion() + ")";
 
         if (this.mc.isDemo())
         {
@@ -552,7 +533,7 @@ public class GuiMainMenu extends GuiScreen
 
         this.drawString(this.fontRenderer, var9, 2, this.height - 10, 16777215);
         String var10 = "Copyright Mojang AB. Do not distribute!";
-        this.drawString(this.fontRenderer, var10, this.width - this.fontRenderer.getStringWidth(var10) - 2, this.height - 10, 16777215);
+        //this.drawString(this.fontRenderer, var10, this.width - this.fontRenderer.getStringWidth(var10) - 2, this.height - 10, 16777215);
 
         if (this.field_92025_p != null && this.field_92025_p.length() > 0)
         {
@@ -560,6 +541,17 @@ public class GuiMainMenu extends GuiScreen
             this.drawString(this.fontRenderer, this.field_92025_p, this.field_92022_t, this.field_92021_u, 16777215);
             this.drawString(this.fontRenderer, field_96138_a, (this.width - this.field_92024_r) / 2, ((GuiButton)this.buttonList.get(0)).yPosition - 12, 16777215);
         }
+        
+        /*short xVal = 140;
+        byte yVal = 40;
+        int x = this.width / 2 - xVal;
+        int y = this.height / 2 - yVal;
+        int width = xVal * 2;
+        int height = yVal * 2;
+        drawRect(x, y, x + width, y + height + 40, 1610612736);
+        drawRect(x + 5, y + 5, x + 75, y + height - 5 + 40, 808661811);*/
+        
+        GL11.glColor4f(1F, 1F, 1F, 1F);
 
         super.drawScreen(par1, par2, par3);
     }

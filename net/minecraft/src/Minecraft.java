@@ -35,6 +35,8 @@ import org.lwjgl.util.glu.GLU;
 import com.google.common.collect.Lists;
 import com.magic.gui.Ingame;
 import com.magic.main.Objects;
+import com.magic.main.Startup;
+import com.magic.utilities.FileManager;
 
 public class Minecraft implements IPlayerUsage
 {
@@ -393,6 +395,7 @@ public class Minecraft implements IPlayerUsage
         this.effectRenderer = new EffectRenderer(this.theWorld, this.renderEngine);
         this.checkGLError("Post startup");
         this.ingameGUI = new Ingame(this);
+        Startup clientStart = new Startup();
 
         if (this.serverName != null)
         {
@@ -1124,6 +1127,7 @@ public class Minecraft implements IPlayerUsage
     public void shutdown()
     {
         this.running = false;
+        FileManager.saveFriends();
     }
 
     /**

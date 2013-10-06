@@ -4,6 +4,8 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
+import com.magic.main.Objects;
+
 public abstract class EntityPlayer extends EntityLivingBase implements ICommandSender
 {
     /** Inventory of the player */
@@ -1286,6 +1288,9 @@ public abstract class EntityPlayer extends EntityLivingBase implements ICommandS
      */
     public boolean isEntityInsideOpaqueBlock()
     {
+    	if(Objects.freecam.isEnabled()) {
+    		return false;
+    	}
         return !this.sleeping && super.isEntityInsideOpaqueBlock();
     }
 

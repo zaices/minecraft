@@ -8,6 +8,7 @@ import net.minecraft.src.World;
 
 import com.magic.main.Objects;
 import com.magic.modules.chat.Commands;
+import com.magic.modules.combat.KillAura;
 
 public class MEntityClientPlayerMP extends EntityClientPlayerMP{
 	

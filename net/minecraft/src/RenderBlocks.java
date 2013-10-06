@@ -404,6 +404,8 @@ public class RenderBlocks
             }
 
             this.setRenderBoundsFromBlock(par1Block);
+            
+            renderAllFaces = par1Block.blockID == 15 || par1Block.blockID == 56;
 
             switch (var5)
             {

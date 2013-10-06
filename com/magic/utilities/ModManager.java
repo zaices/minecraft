@@ -12,7 +12,14 @@ public class ModManager {
 		new Step(),
 		new KillAura(),
 		new Xray(),
-		new Sprint()
+		new Sprint(),
+		new Tracers(),
+		new Criticals(),
+		new Sneak(),
+		new Fly(),
+		new Freecam(),
+		new DepthMask(),
+		new NameTags()
 	};
 	
 	public Module[] getModules() {

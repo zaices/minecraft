@@ -9,6 +9,8 @@ import org.lwjgl.opengl.ARBVertexBufferObject;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GLContext;
 
+import com.magic.modules.world.Xray;
+
 public class Tessellator
 {
     /**
@@ -484,7 +486,13 @@ public class Tessellator
      */
     public void setColorOpaque(int par1, int par2, int par3)
     {
-        this.setColorRGBA(par1, par2, par3, 255);
+        if(Xray._uwot)
+        {
+        	setColorRGBA(par1, par2, par3, Xray._opacity);
+        }else {
+        	this.setColorRGBA(par1, par2, par3, 255);
+        }
+        
     }
 
     /**

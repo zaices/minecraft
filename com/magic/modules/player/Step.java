@@ -3,12 +3,13 @@ package com.magic.modules.player;
 import org.lwjgl.input.Keyboard;
 
 import com.magic.main.Objects;
+import com.magic.modules.Category;
 import com.magic.modules.Module;
 
 public class Step extends Module{
 	
 	public Step() {
-		super("Step", Keyboard.KEY_Y, 0xffffff);
+		super("Step", Keyboard.KEY_Y, 0xffffffff, true, Category.PLAYER);
 	}
 	
 	public void onPreMotionUpdates() {
